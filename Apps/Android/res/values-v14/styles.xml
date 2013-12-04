@@ -1,0 +1,31 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+
+        <!-- API 14 theme customizations can go here. -->
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Example</item>
+        <item name="android:actionBarTabStyle">@style/YCActionBarTabStyle</item>
+    </style>
+
+    <style name="ActionBar.Solid.Example" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:background">@color/bn_green</item>
+        <item name="android:titleTextStyle">@style/YCNewsActionBar.TitleTextStyle</item>
+    </style>
+
+    <style name="YCNewsActionBar.TitleTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- style for the tabs -->
+    <style name="YCActionBarTabStyle"  parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:background">@color/bn_green</item>
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingRight">32dp</item>
+        <item name="android:tabStripEnabled">true</item>
+    </style>
+</resources>

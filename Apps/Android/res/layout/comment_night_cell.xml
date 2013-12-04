@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/CommentCellMasterRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BackgroundDarkGrey"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/CommentCellHeaderRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/PostCellLightGrey" >
+
+        <TextView
+            android:id="@+id/CommentCellUsernameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:text="Username"
+            android:textColor="@color/CommentCellNightHeaderTextColor"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/CommentCellDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"
+            android:text="Date"
+            android:textColor="@color/CommentCellNightHeaderTextColor"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/CommentCellTextRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CommentCellHeaderRelativeLayout"
+        android:background="@color/PostCellLightGrey"
+        android:paddingBottom="2dp"
+        android:paddingLeft="2dp" >
+
+        <TextView
+            android:id="@+id/CommentCellTextTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/BackgroundDarkGrey"
+            android:padding="10dp"
+            android:text="Comment Text"
+            android:textColor="@color/CommentCellNightHeaderTextColor"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

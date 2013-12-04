@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LeftMenuBackgroundDarkGrey" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- HN Profile -->
+
+        <LinearLayout
+            android:id="@+id/LeftMenuHNProfileLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/leftMenuHNProfileHeaderTextView"
+                style="@style/LeftMenuHeaderStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HN PROFILE" />
+
+            <TextView
+                android:id="@+id/LeftMenuHNProfileUsernameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Username"
+                android:textColor="@color/LeftMenuTextColor" />
+
+            <TextView
+                android:id="@+id/LeftMenuHNProfileKarmaTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="0 karma"
+                android:textColor="@color/LeftMenuTextColor" />
+
+            <TextView
+                android:id="@+id/LeftMenuHNProfileMySubmissionsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="My Submissions"
+                android:textColor="@color/bn_green" />
+
+            <TextView
+                android:id="@+id/LeftMenuHNProfileLogoutTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Logout"
+                android:textColor="@color/bn_green" />
+        </LinearLayout>
+
+        <!-- Login -->
+
+        <LinearLayout
+            android:id="@+id/LeftMenuLoginLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/leftMenuLoginHeaderTextView"
+                style="@style/LeftMenuHeaderStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOGIN" />
+
+            <EditText
+                android:id="@+id/leftMenuLoginUsernameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:hint="Username"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/leftMenuLoginPasswordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/PostCellDayBackground"
+                android:gravity="center"
+                android:hint="Password"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/LeftMenuLoginLoginTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Login"
+                android:textColor="@color/bn_green"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <!-- Filter -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/leftMenuFilterHeaderTextView"
+                style="@style/LeftMenuHeaderStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FILTER HOMEPAGE" />
+
+            <Button
+                android:id="@+id/leftMenuTopFilterButton"
+                style="@style/LeftMenuFilterButtonStyle"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leftMenuFilterHeaderTextView"
+                android:text="Top" />
+
+            <Button
+                android:id="@+id/leftMenuAskFilterButton"
+                style="@style/LeftMenuFilterButtonStyle"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leftMenuFilterHeaderTextView"
+                android:layout_toRightOf="@id/leftMenuTopFilterButton"
+                android:text="Ask" 
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/leftMenuNewFilterButton"
+                style="@style/LeftMenuFilterButtonStyle"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leftMenuFilterHeaderTextView"
+                android:layout_toRightOf="@id/leftMenuAskFilterButton"
+                android:text="New" />
+
+            <Button
+                android:id="@+id/leftMenuJobsFilterButton"
+                style="@style/LeftMenuFilterButtonStyle"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leftMenuTopFilterButton"
+                android:text="Jobs"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/leftMenuBestFilterButton"
+                style="@style/LeftMenuFilterButtonStyle"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leftMenuAskFilterButton"
+                android:layout_toRightOf="@id/leftMenuJobsFilterButton"
+                android:text="Best"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/leftMenuSettingsHeaderTextView"
+                style="@style/LeftMenuHeaderStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SETTINGS" />
+
+            <LinearLayout
+                android:id="@+id/leftMenuSettingsReadabilityLinearLayout"
+                style="@style/LeftMenuSettingsLinearLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/leftMenuSettingsHeaderTextView"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/leftMenuSettingsReadabilityImageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/nav_readability_off" />
+
+                <TextView
+                    android:id="@+id/leftMenuSettingsReadabilityTextView"
+                    style="@style/LeftMenuSettingsTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Readability is OFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/leftMenuSettingsMarkAsReadLinearLayout"
+                style="@style/LeftMenuSettingsLinearLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/leftMenuSettingsReadabilityLinearLayout"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:id="@+id/leftMenuSettingsMarkAsReadImageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/nav_markasread_off" />
+
+                <TextView
+                    android:id="@+id/leftMenuSettingsMarkAsReadTextView"
+                    style="@style/LeftMenuSettingsTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Mark as Read is OFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/leftMenuSettingsThemeLinearLayout"
+                style="@style/LeftMenuSettingsLinearLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/leftMenuSettingsMarkAsReadLinearLayout"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/leftMenuSettingsThemeImageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/nav_nightmode_off" />
+
+                <TextView
+                    android:id="@+id/leftMenuSettingsThemeTextView"
+                    style="@style/LeftMenuSettingsTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Theme is DAY" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/LeftMenuShareHeader"
+                style="@style/LeftMenuHeaderStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SHARE NEWS/YC" />
+
+            <ImageView
+                android:id="@+id/leftMenuFacebookImageView"
+                style="@style/LeftMenuShareButtonStyle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/LeftMenuShareHeader"
+                android:src="@drawable/facebook" />
+
+            <ImageView
+                android:id="@+id/leftMenuTwitterImageView"
+                style="@style/LeftMenuShareButtonStyle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/LeftMenuShareHeader"
+                android:layout_toRightOf="@id/leftMenuFacebookImageView"
+                android:src="@drawable/twitter" />
+
+            <ImageView
+                android:id="@+id/leftMenuEmailImageView"
+                style="@style/LeftMenuShareButtonStyle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/LeftMenuShareHeader"
+                android:layout_toRightOf="@id/leftMenuTwitterImageView"
+                android:src="@drawable/email" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/LeftMenuHeaderStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CREDITS" />
+
+            <LinearLayout
+                android:id="@+id/LeftMenuCreditsMattGithub"
+                style="@style/LeftMenuSettingsLinearLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:src="@drawable/github" />
+
+                <TextView
+                    style="@style/LeftMenuSettingsTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="\@MatthewYork" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LeftMenuCreditsMattTwitter"
+                style="@style/LeftMenuSettingsLinearLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:src="@drawable/twitter" />
+
+                <TextView
+                    style="@style/LeftMenuSettingsTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="\@TheMattYork" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LeftMenuCreditsAaron"
+                style="@style/LeftMenuSettingsLinearLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:src="@drawable/github" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:src="@drawable/twitter" />
+
+                <TextView
+                    style="@style/LeftMenuSettingsTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="\@adfleshner" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

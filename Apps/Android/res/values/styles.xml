@@ -1,0 +1,72 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Example</item>
+        <item name="android:background">@color/BackgroundDarkGrey</item>
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="ActionBar.Solid.Example" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:background">@color/bn_green</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="YCNewsActionBar.TitleTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:titleTextStyle">@style/YCNewsActionBar.TitleTextStyle</item>
+    </style>
+
+    <style name="LeftMenuHeaderStyle">
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:background">@color/LeftMenuSeparatorGrey</item>
+        <item name="android:textColor">@color/LeftMenuTextColor</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="LeftMenuSettingsTextViewStyle">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:background">@color/LeftMenuBackgroundDarkGrey</item>
+        <item name="android:textColor">@color/LeftMenuTextColor</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="LeftMenuFilterButtonStyle">
+        <item name="android:background">@color/LeftMenuBackgroundDarkGrey</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/LeftMenuTextColor</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:onClick">didSelectFilterButton</item>
+    </style>
+
+    <style name="LeftMenuSettingsLinearLayoutStyle">
+        <item name="android:background">@color/LeftMenuBackgroundDarkGrey</item>
+        <item name="android:weightSum">1.0</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingTop">5dp</item>
+    </style>
+
+    <style name="LeftMenuShareButtonStyle">
+        <item name="android:alpha">0.5</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+</resources>

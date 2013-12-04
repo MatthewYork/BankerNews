@@ -1,0 +1,35 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="left"
+    tools:context=".MainActivity" >
+
+    <!-- The main content view -->
+
+    <ListView
+        android:id="@+id/PostsListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:overScrollMode="never" >
+    </ListView>
+
+    <!-- The navigation drawer -->
+
+    <LinearLayout
+        android:layout_width="@dimen/nav_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#14ad8f" >
+
+        <fragment
+            android:id="@+id/leftMenuFragment"
+            android:name="com.mattyork.bankernews.Fragments.LeftMenuFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>

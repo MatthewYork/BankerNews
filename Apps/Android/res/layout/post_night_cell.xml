@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BackgroundDarkGrey" >
+
+    <!-- Top -->
+    
+    <LinearLayout
+        android:id="@+id/postCellTopLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.0" >
+
+        <TextView
+            android:id="@+id/postCellTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:gravity="center_vertical"
+            android:minHeight="70dp"
+            android:padding="10dp"
+            android:text="Post Title"
+            android:textColor="#EEEEEE"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:id="@+id/postCellCommentBubbleFrameLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2" >
+
+            <ImageView
+                android:id="@+id/postCellCommentBubbleImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:layout_gravity="center"
+                android:alpha="0.6"
+                android:padding="15dp"
+                android:src="@drawable/comment_bubble" />
+
+            <TextView
+                android:id="@+id/postCellCommentCountTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@android:color/white"
+                android:textSize="13sp"
+                android:layout_marginBottom="2dp" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Footer -->
+    <LinearLayout
+        android:id="@+id/PostCellFooterLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/postCellTopLinearLayout"
+        android:background="@color/PostCellLightGrey"
+        android:orientation="horizontal"
+        android:paddingBottom="2dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp"
+        android:weightSum="1.0" >
+
+        <TextView
+            android:id="@+id/postCellPointsTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="0 Points"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/postCellDateCreatedTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="right"
+            android:text="Date Created"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+</RelativeLayout>

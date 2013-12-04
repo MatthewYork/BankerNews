@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/LinkCommentActivityMasterRelativeLayout"
+     >
+
+    <!--
+    <FrameLayout
+        android:id="@+id/linkCommentFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+    </FrameLayout>
+    -->
+
+    <LinearLayout
+        android:id="@+id/TabBarContainerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bn_green"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/TabBarLinearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1" >
+
+            <FrameLayout
+                android:id="@+id/LinkFrameLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.495" >
+
+                <TextView
+                    android:id="@+id/LinkTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/bn_green"
+                    android:text="Link"
+                    android:textColor="@android:color/white" />
+
+                <View
+                    android:id="@+id/LinkLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@android:color/white" />
+            </FrameLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.01"
+                android:alpha="0.1"
+                android:background="@android:color/black" />
+
+            <FrameLayout
+                android:id="@+id/CommentsFrameLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.495" >
+
+                <TextView
+                    android:id="@+id/CommentsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/bn_green"
+                    android:text="Comments"
+                    android:textColor="@android:color/white" />
+
+                <View
+                    android:id="@+id/CommentsLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@android:color/white" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1.0" >
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.mattyork.bankernews.Helpers.HackerNewsViewPager
+        android:id="@+id/linkCommentViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/TabBarContainerLinearLayout" />
+
+</RelativeLayout>

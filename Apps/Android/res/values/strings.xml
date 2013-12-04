@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Banker News</string>
+    <string name="content_top">Top</string>
+    <string name="content_ask">Ask</string>
+    <string name="content_jobs">Jobs</string>
+    <string name="content_best">Best</string>
+    <string name="content_new">New</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

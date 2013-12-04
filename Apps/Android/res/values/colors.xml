@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bn_green">#20A851</color>
+    <color name="BackgroundDarkGrey">#333333</color>
+    <color name="ShowHNOrange">#954E30</color>
+    <color name="ShowHNOrangeDay">#FAA386</color>
+    <color name="ShowHNFooterOrange">#733D2A</color>
+    <color name="ShowHNFooterOrangeDay">#CB856F</color>
+    <color name="JobsHNGreen">#3C7847</color>
+    <color name="JobsHNGreenDay">#ACEABA</color>
+    <color name="JobsHNFooterGreen">#2E5938</color>
+    <color name="JobsHNFooterGreenDay">#81B18E</color>
+    <color name="AskHNOrange">#954E30</color>
+    <color name="PostCellLightGrey">#404040</color>
+    <color name="LeftMenuBackgroundDarkGrey">#1C1C1C</color>
+    <color name="LeftMenuSeparatorGrey">#262626</color>
+    <color name="LeftMenuTextColor">#EEEEEE</color>
+    <color name="PostCellDayBackground">#D9D9D9</color>
+    <color name="PostCellDayFooterBackgroud">#BFBFBF</color>
+    <color name="PostCellTextColor">#6B6B6B</color>
+    <color name="CommentCellNightHeaderTextColor">#B0B0B0</color>
+    <color name="LightTextColor">#EEEEEE</color>
+</resources>
