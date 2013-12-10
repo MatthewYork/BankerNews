@@ -111,7 +111,7 @@ public class LinkCommentsActivity extends FragmentActivity implements
 			// Move to correct page
 			mLinkCommentsViewPager.setCurrentItem(1, false);
 			
-			formattedUrl = "http://news.ycombinator.com/"
+			formattedUrl = "http://boredbanker.com/"
 					+ selectedLinkUrlString;
 
 			// Remove top tab bar
@@ -218,9 +218,9 @@ public class LinkCommentsActivity extends FragmentActivity implements
 	private Intent getDefaultShareIntent() {
 		Intent mShareIntent = new Intent(Intent.ACTION_SEND);
 		mShareIntent.setType("text/plain");
-		mShareIntent.putExtra(Intent.EXTRA_SUBJECT, "News Y/C");
+		mShareIntent.putExtra(Intent.EXTRA_SUBJECT, "Bored Banker");
 		mShareIntent.putExtra(Intent.EXTRA_TEXT,
-				"Check out this article from hacker news: " + formattedUrl);
+				"Check out this article from Financier News: " + formattedUrl);
 		return mShareIntent;
 	}
 
