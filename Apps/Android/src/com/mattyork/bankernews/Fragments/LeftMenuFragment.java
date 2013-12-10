@@ -112,20 +112,20 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 	private void setupFilterButtons(View view) {
 		mTopFilterButton = (Button) view
 				.findViewById(R.id.leftMenuTopFilterButton);
-		mAskFilterButton = (Button) view
-				.findViewById(R.id.leftMenuAskFilterButton);
+//		mAskFilterButton = (Button) view
+//				.findViewById(R.id.leftMenuAskFilterButton);
 		mNewFilterButton = (Button) view
 				.findViewById(R.id.leftMenuNewFilterButton);
-		mJobsFilterButton = (Button) view
-				.findViewById(R.id.leftMenuJobsFilterButton);
+//		mJobsFilterButton = (Button) view
+//				.findViewById(R.id.leftMenuJobsFilterButton);
 		mBestFilterButton = (Button) view
 				.findViewById(R.id.leftMenuBestFilterButton);
 
 		// Add buttons to list
 		buttonsArrayList.add(mTopFilterButton);
-		buttonsArrayList.add(mAskFilterButton);
+		//buttonsArrayList.add(mAskFilterButton);
 		buttonsArrayList.add(mNewFilterButton);
-		buttonsArrayList.add(mJobsFilterButton);
+		//buttonsArrayList.add(mJobsFilterButton);
 		buttonsArrayList.add(mBestFilterButton);
 
 		// Default to the "Top" filter button being selected
@@ -213,11 +213,11 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 					.didSelectFilterPosts(PostFilterType.PostFilterTypeTop);
 			getActivity().getActionBar().setTitle(R.string.content_top);
 			break;
-		case R.id.leftMenuAskFilterButton:
-			this.mCallbackLeftMenuSettingChangedListener
-					.didSelectFilterPosts(PostFilterType.PostFilterTypeAsk);
-			getActivity().getActionBar().setTitle(R.string.content_ask);
-			break;
+//		case R.id.leftMenuAskFilterButton:
+//			this.mCallbackLeftMenuSettingChangedListener
+//					.didSelectFilterPosts(PostFilterType.PostFilterTypeAsk);
+//			getActivity().getActionBar().setTitle(R.string.content_ask);
+//			break;
 		case R.id.leftMenuNewFilterButton:
 			this.mCallbackLeftMenuSettingChangedListener
 					.didSelectFilterPosts(PostFilterType.PostFilterTypeNew);

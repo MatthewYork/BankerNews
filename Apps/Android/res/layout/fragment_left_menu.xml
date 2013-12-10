@@ -132,15 +132,15 @@
                 android:layout_below="@id/leftMenuFilterHeaderTextView"
                 android:text="Top" />
 
-            <Button
+            <!-- <Button
                 android:id="@+id/leftMenuAskFilterButton"
                 style="@style/LeftMenuFilterButtonStyle"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/leftMenuFilterHeaderTextView"
                 android:layout_toRightOf="@id/leftMenuTopFilterButton"
-                android:text="Ask" 
-                android:visibility="gone"/>
+                android:text="Ask"
+                android:visibility="gone" /> -->
 
             <Button
                 android:id="@+id/leftMenuNewFilterButton"
@@ -148,7 +148,7 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/leftMenuFilterHeaderTextView"
-                android:layout_toRightOf="@id/leftMenuAskFilterButton"
+                android:layout_toRightOf="@id/leftMenuTopFilterButton"
                 android:text="New" />
 
             <Button
@@ -158,17 +158,17 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/leftMenuTopFilterButton"
                 android:text="Jobs"
-                android:visibility="gone" />
+                android:visibility="gone"
+                 />
 
             <Button
                 android:id="@+id/leftMenuBestFilterButton"
                 style="@style/LeftMenuFilterButtonStyle"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/leftMenuAskFilterButton"
-                android:layout_toRightOf="@id/leftMenuJobsFilterButton"
-                android:text="Best"
-                android:visibility="gone" />
+                android:layout_below="@id/leftMenuFilterHeaderTextView"
+                android:layout_toRightOf="@id/leftMenuNewFilterButton"
+                android:text="Best" />
         </RelativeLayout>
 
         <RelativeLayout

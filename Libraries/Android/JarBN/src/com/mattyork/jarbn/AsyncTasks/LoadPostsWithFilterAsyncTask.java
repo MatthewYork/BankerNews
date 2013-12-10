@@ -32,7 +32,7 @@ public class LoadPostsWithFilterAsyncTask extends
 			pathAddition = "ask";
 			break;
 		case PostFilterTypeBest:
-			pathAddition = "best";
+			pathAddition = "best?";
 			break;
 		case PostFilterTypeJobs:
 			pathAddition = "jobs";
