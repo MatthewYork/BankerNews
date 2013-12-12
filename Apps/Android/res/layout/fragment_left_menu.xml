@@ -132,7 +132,8 @@
                 android:layout_below="@id/leftMenuFilterHeaderTextView"
                 android:text="Top" />
 
-            <!-- <Button
+            <!--
+                 <Button
                 android:id="@+id/leftMenuAskFilterButton"
                 style="@style/LeftMenuFilterButtonStyle"
                 android:layout_width="60dp"
@@ -140,7 +141,8 @@
                 android:layout_below="@id/leftMenuFilterHeaderTextView"
                 android:layout_toRightOf="@id/leftMenuTopFilterButton"
                 android:text="Ask"
-                android:visibility="gone" /> -->
+                android:visibility="gone" />
+            -->
 
             <Button
                 android:id="@+id/leftMenuNewFilterButton"
@@ -158,8 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/leftMenuTopFilterButton"
                 android:text="Jobs"
-                android:visibility="gone"
-                 />
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/leftMenuBestFilterButton"
@@ -371,6 +372,41 @@
                     android:layout_height="match_parent"
                     android:text="\@adfleshner" />
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/LeftMenuHeaderStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DONATE" />
+            
+            <LinearLayout
+                android:id="@+id/LeftMenuBitcoinLinearLayout"
+                style="@style/LeftMenuSettingsLinearLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:src="@drawable/bitcoin_logo_white" />
+
+                <TextView
+                    style="@style/LeftMenuSettingsTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Tap to Copy Donation Address" />
+            </LinearLayout>
+            
         </LinearLayout>
     </LinearLayout>
 

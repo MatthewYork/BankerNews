@@ -3,6 +3,10 @@ package com.mattyork.bankernews.Fragments;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -67,6 +71,9 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 	private LinearLayout mMattTwitterLinearLayout;
 	private LinearLayout mAaronGithubTwitterLinearLayout;
 
+	// Donation
+	private LinearLayout mBitcoinLinearLayout;
+
 	OnLeftMenuSettingChangedListener mCallbackLeftMenuSettingChangedListener;
 
 	@Override
@@ -99,8 +106,15 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 		setupSettings(view);
 		setupShareButtons(view);
 		setupCreditsButtons(view);
-
+		setupDonationButtons(view);
 		return view;
+	}
+
+	private void setupDonationButtons(View view) {
+		// TODO Auto-generated method stub
+		mBitcoinLinearLayout = (LinearLayout) view
+				.findViewById(R.id.LeftMenuBitcoinLinearLayout);
+		mBitcoinLinearLayout.setOnClickListener(this);
 	}
 
 	@Override
@@ -112,20 +126,20 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 	private void setupFilterButtons(View view) {
 		mTopFilterButton = (Button) view
 				.findViewById(R.id.leftMenuTopFilterButton);
-//		mAskFilterButton = (Button) view
-//				.findViewById(R.id.leftMenuAskFilterButton);
+		// mAskFilterButton = (Button) view
+		// .findViewById(R.id.leftMenuAskFilterButton);
 		mNewFilterButton = (Button) view
 				.findViewById(R.id.leftMenuNewFilterButton);
-//		mJobsFilterButton = (Button) view
-//				.findViewById(R.id.leftMenuJobsFilterButton);
+		// mJobsFilterButton = (Button) view
+		// .findViewById(R.id.leftMenuJobsFilterButton);
 		mBestFilterButton = (Button) view
 				.findViewById(R.id.leftMenuBestFilterButton);
 
 		// Add buttons to list
 		buttonsArrayList.add(mTopFilterButton);
-		//buttonsArrayList.add(mAskFilterButton);
+		// buttonsArrayList.add(mAskFilterButton);
 		buttonsArrayList.add(mNewFilterButton);
-		//buttonsArrayList.add(mJobsFilterButton);
+		// buttonsArrayList.add(mJobsFilterButton);
 		buttonsArrayList.add(mBestFilterButton);
 
 		// Default to the "Top" filter button being selected
@@ -213,11 +227,11 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 					.didSelectFilterPosts(PostFilterType.PostFilterTypeTop);
 			getActivity().getActionBar().setTitle(R.string.content_top);
 			break;
-//		case R.id.leftMenuAskFilterButton:
-//			this.mCallbackLeftMenuSettingChangedListener
-//					.didSelectFilterPosts(PostFilterType.PostFilterTypeAsk);
-//			getActivity().getActionBar().setTitle(R.string.content_ask);
-//			break;
+		// case R.id.leftMenuAskFilterButton:
+		// this.mCallbackLeftMenuSettingChangedListener
+		// .didSelectFilterPosts(PostFilterType.PostFilterTypeAsk);
+		// getActivity().getActionBar().setTitle(R.string.content_ask);
+		// break;
 		case R.id.leftMenuNewFilterButton:
 			this.mCallbackLeftMenuSettingChangedListener
 					.didSelectFilterPosts(PostFilterType.PostFilterTypeNew);
@@ -283,6 +297,9 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 			Intent browserIntentAaron = new Intent(Intent.ACTION_VIEW,
 					Uri.parse("https://github.com/adfleshner"));
 			startActivity(browserIntentAaron);
+			break;
+		case R.id.LeftMenuBitcoinLinearLayout:
+			copyBitcoinAddress();
 			break;
 		default:
 			break;
@@ -423,5 +440,22 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 
 	private void goEmail() {
 
+	}
+
+	private void copyBitcoinAddress() {
+		ClipboardManager clipboard = (ClipboardManager)
+		        getActivity().getSystemService(getActivity().CLIPBOARD_SERVICE);
+		// Creates a new text clip to put on the clipboard
+		ClipData clip = ClipData.newPlainText("simple text","15JLNn1nmjJWFV9Cm2n7NBQ5WvaHopbUY6");
+		// Set the clipboard's primary clip.
+		clipboard.setPrimaryClip(clip);
+		
+		//Build thanks alert and show
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setIcon(getActivity().getResources().getDrawable(R.drawable.ic_launcher)).setTitle("Thank you!").setMessage("The address for bitcoin donation has been copied to your clipboard.").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                }
+        });
+        builder.create().show();
 	}
 }
