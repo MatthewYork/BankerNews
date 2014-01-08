@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.mattyork.jarbn.BNUtilities;
 import com.mattyork.jarbn.OMScanner;
 import com.mattyork.jarbn.BNObjects.BNPost.PostType;
 
-public class BNComment {
+public class BNComment implements Parcelable{
 	public enum CommentType {
 		CommentTypeDefault, CommentTypeAskHN, CommentTypeJobs
 	}
@@ -22,6 +25,62 @@ public class BNComment {
 	public String ReplyURLString;
 	public int Level;
 	public ArrayList<BNCommentLink> Links;
+	
+	public BNComment() {
+	}
+	
+	 protected BNComment(Parcel in) {
+	        Type = (CommentType) in.readValue(CommentType.class.getClassLoader());
+	        Text = in.readString();
+	        Username = in.readString();
+	        CommentId = in.readString();
+	        ParentID = in.readString();
+	        TimeCreatedString = in.readString();
+	        ReplyURLString = in.readString();
+	        Level = in.readInt();
+	        if (in.readByte() == 0x01) {
+	            Links = new ArrayList<BNCommentLink>();
+	            in.readList(Links, BNCommentLink.class.getClassLoader());
+	        } else {
+	            Links = null;
+	        }
+	    }
+
+	    @Override
+	    public int describeContents() {
+	        return 0;
+	    }
+
+	    @Override
+	    public void writeToParcel(Parcel dest, int flags) {
+	        dest.writeValue(Type);
+	        dest.writeString(Text);
+	        dest.writeString(Username);
+	        dest.writeString(CommentId);
+	        dest.writeString(ParentID);
+	        dest.writeString(TimeCreatedString);
+	        dest.writeString(ReplyURLString);
+	        dest.writeInt(Level);
+	        if (Links == null) {
+	            dest.writeByte((byte) (0x00));
+	        } else {
+	            dest.writeByte((byte) (0x01));
+	            dest.writeList(Links);
+	        }
+	    }
+
+	    @SuppressWarnings("unused")
+	    public static final Parcelable.Creator<BNComment> CREATOR = new Parcelable.Creator<BNComment>() {
+	        @Override
+	        public BNComment createFromParcel(Parcel in) {
+	            return new BNComment(in);
+	        }
+
+	        @Override
+	        public BNComment[] newArray(int size) {
+	            return new BNComment[size];
+	        }
+	    };
 	
 	public static ArrayList<BNComment> parsedCommentsFromHTML(String htmlString, BNPost post) {
 		ArrayList<BNComment> comments = new ArrayList<BNComment>();

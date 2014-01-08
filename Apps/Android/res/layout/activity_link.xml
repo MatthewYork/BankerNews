@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:id="@+id/LinkCommentActivityMasterRelativeLayout"
-     >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <!--
     <FrameLayout
@@ -18,7 +17,7 @@
     <LinearLayout
         android:id="@+id/TabBarContainerLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:background="@color/bn_green"
         android:orientation="vertical" >
 
@@ -33,7 +32,7 @@
                 android:id="@+id/LinkFrameLayout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.495" >
+                android:layout_weight="0.4925" >
 
                 <TextView
                     android:id="@+id/LinkTextView"
@@ -41,13 +40,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@color/bn_green"
-                    android:text="Link"
+                    android:text="LINK"
                     android:textColor="@android:color/white" />
 
                 <View
                     android:id="@+id/LinkLine"
                     android:layout_width="match_parent"
-                    android:layout_height="3dp"
+                    android:layout_height="1sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
@@ -60,7 +59,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="0.01"
+                android:layout_weight="0.005"
                 android:alpha="0.1"
                 android:background="@android:color/black" />
 
@@ -68,7 +67,7 @@
                 android:id="@+id/CommentsFrameLayout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.495" >
+                android:layout_weight="0.4925" >
 
                 <TextView
                     android:id="@+id/CommentsTextView"
@@ -76,13 +75,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@color/bn_green"
-                    android:text="Comments"
+                    android:text="COMMENTS"
                     android:textColor="@android:color/white" />
 
                 <View
                     android:id="@+id/CommentsLine"
                     android:layout_width="match_parent"
-                    android:layout_height="3dp"
+                    android:layout_height="1sp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"

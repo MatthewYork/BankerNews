@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import android.R.integer;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import com.mattyork.jarbn.BNManager;
 import com.mattyork.jarbn.OMScanner;
 
-public class BNPost {
+public class BNPost implements Parcelable {
+
 	public enum PostType {
 		PostTypeDefault, PostTypeAskHN, PostTypeJobs, PostTypeShowHN
 	}
@@ -24,6 +26,52 @@ public class BNPost {
 	public int CommentCount = 0;
 	public String PostId = "";
 	public String TimeCreatedString = "";
+	
+	public BNPost() {
+	}
+
+	protected BNPost(Parcel in) {
+		Type = (PostType) in.readValue(PostType.class.getClassLoader());
+		Username = in.readString();
+		UrlString = in.readString();
+		UrlDomain = in.readString();
+		Title = in.readString();
+		Points = in.readInt();
+		CommentCount = in.readInt();
+		PostId = in.readString();
+		TimeCreatedString = in.readString();
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeValue(Type);
+		dest.writeString(Username);
+		dest.writeString(UrlString);
+		dest.writeString(UrlDomain);
+		dest.writeString(Title);
+		dest.writeInt(Points);
+		dest.writeInt(CommentCount);
+		dest.writeString(PostId);
+		dest.writeString(TimeCreatedString);
+	}
+
+	@SuppressWarnings("unused")
+	public static final Parcelable.Creator<BNPost> CREATOR = new Parcelable.Creator<BNPost>() {
+		@Override
+		public BNPost createFromParcel(Parcel in) {
+			return new BNPost(in);
+		}
+
+		@Override
+		public BNPost[] newArray(int size) {
+			return new BNPost[size];
+		}
+	};
 
 	/***
 	 * Creates an ArrayList of Posts from a given HTML stirng and valid FNID.

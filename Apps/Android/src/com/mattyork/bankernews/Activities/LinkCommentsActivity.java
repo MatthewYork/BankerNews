@@ -1,6 +1,8 @@
 package com.mattyork.bankernews.Activities;
 
 import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher;
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,7 +37,7 @@ public class LinkCommentsActivity extends FragmentActivity implements
 	private View mLinkLineView, mCommentLineView;
 	private TextView mLinkTextView, mCommentTextView;
 	private FrameLayout mLinkFrameLayout, mCommentsFrameLayout;
-	PullToRefreshAttacher mPullToRefreshAttacher;
+	private PullToRefreshAttacher mPullToRefreshAttacher;
 
 	HackerNewsViewPager mLinkCommentsViewPager;
 	LinkCommentPagerAdapter mPageAdapter;
@@ -60,11 +62,9 @@ public class LinkCommentsActivity extends FragmentActivity implements
 		// Get selected content type
 		selectedContentType = getIntent().getExtras().getInt("selectedContent",
 				0);
-
 		// Setup actionbar
 		getActionBar().setHomeButtonEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-
 		mMasterRelativeLayout = (RelativeLayout) findViewById(R.id.LinkCommentActivityMasterRelativeLayout);
 		if (SettingsManager.getInstance().usingNightMode) {
 			mMasterRelativeLayout.setBackgroundColor(getResources().getColor(
@@ -98,24 +98,23 @@ public class LinkCommentsActivity extends FragmentActivity implements
 					0);
 			if (selectedPostType == PostType.PostTypeJobs.ordinal()) {
 				// Remove top tab bar
-				mTabbarContainerLinearLayout.setVisibility(View.GONE);
+				 mTabbarContainerLinearLayout.setVisibility(View.GONE);
 
 				// Move to correct page
 				mLinkCommentsViewPager.setCurrentItem(0, false);
-				
-				//Disable Paging
+
+				// Disable Paging
 				mLinkCommentsViewPager.setPagingEnabled(false);
 			}
 
 		} else { // Internal HN Link
 			// Move to correct page
 			mLinkCommentsViewPager.setCurrentItem(1, false);
-			
-			formattedUrl = "http://boredbanker.com/"
-					+ selectedLinkUrlString;
+
+			formattedUrl = "http://boredbanker.com/" + selectedLinkUrlString;
 
 			// Remove top tab bar
-			mTabbarContainerLinearLayout.setVisibility(View.GONE);
+			 mTabbarContainerLinearLayout.setVisibility(View.GONE);
 
 			// Disable paging
 			mLinkCommentsViewPager.setPagingEnabled(false);
@@ -143,16 +142,16 @@ public class LinkCommentsActivity extends FragmentActivity implements
 
 	private void setupTabs() {
 		// Setup Views
-		mTabbarContainerLinearLayout = (LinearLayout) findViewById(R.id.TabBarContainerLinearLayout);
-		mLinkFrameLayout = (FrameLayout) findViewById(R.id.LinkFrameLayout);
-		mCommentsFrameLayout = (FrameLayout) findViewById(R.id.CommentsFrameLayout);
-		mLinkTextView = (TextView) findViewById(R.id.LinkTextView);
-		mCommentTextView = (TextView) findViewById(R.id.CommentsTextView);
-		mLinkLineView = (View) findViewById(R.id.LinkLine);
-		mCommentLineView = (View) findViewById(R.id.CommentsLine);
-
-		mLinkFrameLayout.setOnClickListener(this);
-		mCommentsFrameLayout.setOnClickListener(this);
+		 mTabbarContainerLinearLayout = (LinearLayout)
+		 findViewById(R.id.TabBarContainerLinearLayout);
+		 mLinkFrameLayout = (FrameLayout) findViewById(R.id.LinkFrameLayout);
+		 mCommentsFrameLayout = (FrameLayout)
+		 findViewById(R.id.CommentsFrameLayout);
+		 mLinkLineView = (View)findViewById(R.id.LinkLine);
+		 mCommentLineView = (View)findViewById(R.id.CommentsLine);
+		 
+		 mLinkFrameLayout.setOnClickListener(this);
+		 mCommentsFrameLayout.setOnClickListener(this);
 
 		selectedTabIndex = 0;
 		updateTabUI();
@@ -161,12 +160,12 @@ public class LinkCommentsActivity extends FragmentActivity implements
 	private void updateTabUI() {
 		switch (selectedTabIndex) {
 		case 0:
-			mLinkLineView.setVisibility(View.VISIBLE);
-			mCommentLineView.setVisibility(View.INVISIBLE);
+			 mLinkLineView.setVisibility(View.VISIBLE);
+			 mCommentLineView.setVisibility(View.INVISIBLE);
 			break;
 		case 1:
-			mCommentLineView.setVisibility(View.VISIBLE);
-			mLinkLineView.setVisibility(View.INVISIBLE);
+			 mCommentLineView.setVisibility(View.VISIBLE);
+			 mLinkLineView.setVisibility(View.INVISIBLE);
 			break;
 		default:
 			break;
@@ -175,8 +174,6 @@ public class LinkCommentsActivity extends FragmentActivity implements
 
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		// TODO Auto-generated method stub
-
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// Toggle sliding layer
@@ -191,15 +188,8 @@ public class LinkCommentsActivity extends FragmentActivity implements
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
 		getMenuInflater().inflate(R.menu.article_comments_menu, menu);
-
-		// Locate MenuItem with ShareActionProvider
-		MenuItem item = menu.findItem(R.id.menu_item_share);
-
 		// Fetch and store ShareActionProvider
-		// mShareActionProvider = (ShareActionProvider)
-		// item.getActionProvider();
 		mShareActionProvider = (ShareActionProvider) (ShareActionProvider) menu
 				.findItem(R.id.menu_item_share).getActionProvider();
 		setShareIntent(getDefaultShareIntent());
@@ -256,7 +246,6 @@ public class LinkCommentsActivity extends FragmentActivity implements
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.LinkFrameLayout:
 			selectedTabIndex = 0;
