@@ -27,6 +27,8 @@ import com.mattyork.jarbn.BNWebService.PostFilterType;
 
 public class LeftMenuFragment extends Fragment implements OnClickListener {
 
+	private static final String BANKER_NEWS_FILTER_HOMEPAGE = "com.mattyork.bankernews.Fragments id";
+	private int FilterHomePageId = -1;
 	// Top Filter Buttons
 	private Button mTopFilterButton;
 	private Button mAskFilterButton;
@@ -102,12 +104,18 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 
 		// Setup UI
 		setupLogin(view);
-		setupFilterButtons(view);
+		setupFilterButtons(view,savedInstanceState);
 		setupSettings(view);
 		setupShareButtons(view);
 		setupCreditsButtons(view);
 		setupDonationButtons(view);
 		return view;
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt(BANKER_NEWS_FILTER_HOMEPAGE, FilterHomePageId);
 	}
 
 	private void setupDonationButtons(View view) {
@@ -123,7 +131,7 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 		super.onViewCreated(view, savedInstanceState);
 	}
 
-	private void setupFilterButtons(View view) {
+	private void setupFilterButtons(View view, Bundle inState) {
 		mTopFilterButton = (Button) view
 				.findViewById(R.id.leftMenuTopFilterButton);
 		// mAskFilterButton = (Button) view
@@ -143,7 +151,12 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 		buttonsArrayList.add(mBestFilterButton);
 
 		// Default to the "Top" filter button being selected
-		setButtonSelected(mTopFilterButton);
+		if(inState!=null){
+			FilterHomePageId = inState.getInt(BANKER_NEWS_FILTER_HOMEPAGE);
+		}else{
+			FilterHomePageId = mTopFilterButton.getId();
+		}
+		setButtonSelected(FilterHomePageId);
 	}
 
 	private void setupSettings(View view) {
@@ -207,9 +220,10 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 		mAaronGithubTwitterLinearLayout.setOnClickListener(this);
 	}
 
-	private void setButtonSelected(View selectedButton) {
+	private void setButtonSelected(int selectedButtonId) {
+		FilterHomePageId = selectedButtonId;
 		for (Button button : buttonsArrayList) {
-			if (button.getId() == selectedButton.getId()) {
+			if (button.getId() == selectedButtonId) {
 				button.setTextColor(getResources().getColor(R.color.bn_green));
 			} else {
 				button.setTextColor(getResources().getColor(
@@ -219,7 +233,7 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 	}
 
 	public void didSelectFilterButton(View v) {
-		setButtonSelected(v);
+		setButtonSelected(v.getId());
 
 		switch (v.getId()) {
 		case R.id.leftMenuTopFilterButton:
