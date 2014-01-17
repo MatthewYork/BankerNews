@@ -58,6 +58,7 @@ public class LinkCommentsActivity extends FragmentActivity implements
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_link);
+		
 
 		// Get selected content type
 		selectedContentType = getIntent().getExtras().getInt("selectedContent",
@@ -176,14 +177,19 @@ public class LinkCommentsActivity extends FragmentActivity implements
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			// Toggle sliding layer
 			this.finish();
+			overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 			break;
 		default:
 			break;
 		}
 
 		return super.onMenuItemSelected(featureId, item);
+	}
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);	
 	}
 
 	@Override

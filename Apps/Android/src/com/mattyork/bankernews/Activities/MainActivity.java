@@ -15,16 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
 
 import com.mattyork.bankernews.R;
 import com.mattyork.bankernews.Adapters.PostsCellAdapter;
 import com.mattyork.bankernews.Fragments.LeftMenuFragment;
-import com.mattyork.bankernews.Fragments.LeftMenuFragment.OnLeftMenuSettingChangedListener;
 import com.mattyork.bankernews.Helpers.SettingsManager;
+import com.mattyork.bankernews.interfaces.OnLeftMenuSettingChangedListener;
 import com.mattyork.jarbn.BNWebService.PostFilterType;
 import com.mattyork.jarbn.AsyncTasks.LoadPostsWithFilterAsyncTask;
 import com.mattyork.jarbn.BNObjects.BNPost;
+import com.twotoasters.jazzylistview.JazzyGridView;
+import com.twotoasters.jazzylistview.JazzyHelper;
 
 public class MainActivity extends FragmentActivity implements
 		OnItemClickListener, OnLeftMenuSettingChangedListener,
@@ -34,26 +35,27 @@ public class MainActivity extends FragmentActivity implements
 	private static final String BANKER_NEWS_TITLE = "com.mattyork.bankernews.Activities title";
 	DrawerLayout drawerLayout;
 	ActionBarDrawerToggle drawerToggle;
-	ListView postsListView;
+	JazzyGridView postsGridView;
 	ArrayList<BNPost> posts = new ArrayList<BNPost>();
 	LeftMenuFragment leftMenuFragment;
 	PullToRefreshAttacher mPullToRefreshAttacher;
 	public static BNPost selectedPost;
+	private int mCurrentTransitionEffect = JazzyHelper.SLIDE_IN;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		setContentView(R.layout.activity_main);
 		// Load default settings
 		SettingsManager.getInstance().loadSettingsFromSharedPreferences(this);
 
-		setContentView(R.layout.activity_main);
+		
 
 		// Setup left menu
 		setupLeftMenu();
 
 		// Customize UI
-		buildUI();
+		setLayoutBackgroundColor();
 
 		// Customize action bar
 		getActionBar().setHomeButtonEnabled(true);
@@ -65,11 +67,12 @@ public class MainActivity extends FragmentActivity implements
 
 		// Fetch top posts
 		if (savedInstanceState != null) {
-				posts = savedInstanceState.getParcelableArrayList(BANKER_NEWS_POSTS);
-				SetPostsListView(posts);
-			getActionBar().setTitle(savedInstanceState.getString(BANKER_NEWS_TITLE));
-			
-			
+			posts = savedInstanceState
+					.getParcelableArrayList(BANKER_NEWS_POSTS);
+			SetPostsListView(posts);
+			getActionBar().setTitle(
+					savedInstanceState.getString(BANKER_NEWS_TITLE));
+
 		} else {
 			getPostsWithFilterType(PostFilterType.PostFilterTypeTop);
 		}
@@ -80,10 +83,11 @@ public class MainActivity extends FragmentActivity implements
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		outState.putParcelableArrayList(BANKER_NEWS_POSTS, posts);
-		outState.putString(BANKER_NEWS_TITLE, getActionBar().getTitle().toString());
+		outState.putString(BANKER_NEWS_TITLE, getActionBar().getTitle()
+				.toString());
 	}
 
-	private void buildUI() {
+	private void setLayoutBackgroundColor() {
 		if (SettingsManager.getInstance().usingNightMode) {
 			drawerLayout.setBackgroundColor(getResources().getColor(
 					R.color.BackgroundDarkGrey));
@@ -101,25 +105,22 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	public void getPostsWithFilterType(PostFilterType type) {
-
 		LoadPostsWithFilterAsyncTask task = new LoadPostsWithFilterAsyncTask(
 				type) {
 			@Override
 			protected void onPreExecute() {
 				super.onPreExecute();
-
 				mPullToRefreshAttacher.setRefreshing(true);
 			}
 
 			@Override
 			protected void onPostExecute(java.util.ArrayList<BNPost> result) {
 				posts = result;
-
 				// Reset pull to refresh
 				mPullToRefreshAttacher.setRefreshComplete();
 				SetPostsListView(posts);
 				if (posts != null && this != null) {
-					
+
 				}
 
 				return;
@@ -127,21 +128,27 @@ public class MainActivity extends FragmentActivity implements
 		};
 		task.execute();
 	}
-	//Adds posts to the listview
+
+	// Adds posts to the listview
 	protected void SetPostsListView(ArrayList<BNPost> posts) {
-		postsListView.setAdapter(new PostsCellAdapter(
-				MainActivity.this, getThemedCellLayoutId(), posts));
+		postsGridView.setAdapter(new PostsCellAdapter(MainActivity.this,getThemedCellLayoutId(), posts));
 	}
 
 	public void setupPostsListView() {
-		postsListView = (ListView) findViewById(R.id.PostsListView);
-		postsListView.setOnItemClickListener(this);
+		postsGridView = (JazzyGridView) findViewById(R.id.PostsListView);
+		setupJazziness(mCurrentTransitionEffect);
+		postsGridView.setOnItemClickListener(this);
 
 		// Create a PullToRefreshAttacher instance
 		mPullToRefreshAttacher = PullToRefreshAttacher.get(this);
 
 		// Add the Refreshable View and provide the refresh listener
-		mPullToRefreshAttacher.addRefreshableView(postsListView, this);
+		mPullToRefreshAttacher.addRefreshableView(postsGridView, this);
+	}
+
+	private void setupJazziness(int effect) {
+		mCurrentTransitionEffect = effect;
+		postsGridView.setTransitionEffect(mCurrentTransitionEffect);
 	}
 
 	public void setupLeftMenu() {
@@ -205,6 +212,7 @@ public class MainActivity extends FragmentActivity implements
 		i.putExtra("selectedPostType", posts.get(position).Type.ordinal());
 		i.putExtra("selectedContent", 0);
 		this.startActivity(i);
+		overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 	}
 
 	public void didSelectFilterButton(View v) {
@@ -214,14 +222,10 @@ public class MainActivity extends FragmentActivity implements
 
 	@Override
 	public void didSelectFilterPosts(PostFilterType type) {
-		// TODO Auto-generated method stub
-
 		drawerLayout.closeDrawer(Gravity.START);
-
 		// Clear posts
-		postsListView.setAdapter(new PostsCellAdapter(MainActivity.this,
+		postsGridView.setAdapter(new PostsCellAdapter(MainActivity.this,
 				getThemedCellLayoutId(), new ArrayList<BNPost>()));
-
 		// Get new posts
 		SettingsManager.getInstance().currentPostFilterType = type;
 		getPostsWithFilterType(type);
@@ -250,9 +254,10 @@ public class MainActivity extends FragmentActivity implements
 
 	private void refreshTable() {
 		// Clear posts
-		if (postsListView != null) {
-			postsListView.setAdapter(new PostsCellAdapter(MainActivity.this,
+		if (postsGridView != null) {
+			postsGridView.setAdapter(new PostsCellAdapter(MainActivity.this,
 					getThemedCellLayoutId(), posts));
+			setLayoutBackgroundColor();
 		}
 	}
 

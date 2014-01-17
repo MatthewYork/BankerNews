@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.mattyork.bankernews.R;
 import com.mattyork.bankernews.Helpers.SettingsManager;
+import com.mattyork.bankernews.interfaces.OnLeftMenuSettingChangedListener;
 import com.mattyork.jarbn.BNWebService.PostFilterType;
 
 public class LeftMenuFragment extends Fragment implements OnClickListener {
@@ -127,7 +128,6 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onViewCreated(view, savedInstanceState);
 	}
 
@@ -266,11 +266,7 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 		}
 	}
 
-	public interface OnLeftMenuSettingChangedListener {
-		public void didSelectFilterPosts(PostFilterType type);
-
-		public void didSelectChangeTheme();
-	}
+	
 
 	@Override
 	public void onClick(View v) {
@@ -300,17 +296,13 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 
 			break;
 		case R.id.LeftMenuCreditsMattGithub:
-			Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-					Uri.parse("https://github.com/MatthewYork"));
-			startActivity(browserIntent);
+			goToWebsite("https://github.com/MatthewYork");
 			break;
 		case R.id.LeftMenuCreditsMattTwitter:
 			goToTwitterUser("TheMattYork");
 			break;
 		case R.id.LeftMenuCreditsAaron:
-			Intent browserIntentAaron = new Intent(Intent.ACTION_VIEW,
-					Uri.parse("https://github.com/adfleshner"));
-			startActivity(browserIntentAaron);
+			goToWebsite("https://github.com/adfleshner");
 			break;
 		case R.id.LeftMenuBitcoinLinearLayout:
 			copyBitcoinAddress();
@@ -319,6 +311,12 @@ public class LeftMenuFragment extends Fragment implements OnClickListener {
 			break;
 		}
 
+	}
+	
+	private void goToWebsite(String url){
+		Intent browserIntentAaron = new Intent(Intent.ACTION_VIEW,
+				Uri.parse(url));
+		startActivity(browserIntentAaron);
 	}
 
 	private void goToTwitterUser(String username) {

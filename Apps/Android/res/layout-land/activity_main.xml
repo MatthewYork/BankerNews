@@ -12,10 +12,13 @@
         android:id="@+id/PostsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:minHeight="100dp"
         android:divider="@null"
         android:dividerHeight="0dp"
         android:gravity="center"
-        android:numColumns="1"
+        android:numColumns="2"
+        android:verticalSpacing="3dp"
+        android:horizontalSpacing="3dp"
         android:overScrollMode="never"
         android:stretchMode="columnWidth" >
     </com.twotoasters.jazzylistview.JazzyGridView>
@@ -31,9 +34,8 @@
         <fragment
             android:id="@+id/leftMenuFragment"
             android:name="com.mattyork.bankernews.Fragments.LeftMenuFragment"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>
